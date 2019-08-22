@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Insert Students
+{% endblock %}
+
+{% block main %}
+<div style="align-items: center;
+  display: flex;
+  justify-content: center"
+  >
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+
+    <h5 class="card-title">Add Student</h5>
+     <form action="/students" method="post">
+
+        <div style="margin-top:10px;">
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="gr_num" placeholder="GR.No" type="text" required/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="class_sec" placeholder="Class/Section" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="students_name" placeholder="Student's Name" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="dob" placeholder="Date of Birth" type="date"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="birth" placeholder="Place of Birth" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="student_iqama" placeholder="Student's Iqama" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="passport_number" placeholder="Student's Passport Number" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="blood_group" placeholder="Blood Group" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="father_name" placeholder="Father's Name" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="father_iqama" placeholder="Father's Iqama Number" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="father_passport" placeholder="Father's Passport Number" type="text"/>
+        </div>
+         <div class="form-group">
+            <input class="form-control" name="mother_name" placeholder="Mother's Name" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="mother_iqama" placeholder="Mother's Iqama Number" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="mother_passport" placeholder="Mother's Passport Number" type="text"/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="address" placeholder="Address" type="text"/>
+        </div>
+       <div class="form-group">
+            <input class="form-control" name="telephone" placeholder="Telephone Number" type="text"/>
+        </div>
+         <div class="form-group">
+            <input class="form-control" name="email" placeholder="Email" type="text"/>
+        </div>
+         <div class="form-group">
+            <input class="form-control" name="relative_name" placeholder="Relative's Name" type="text"/>
+        </div>
+         <div class="form-group">
+            <input class="form-control" name="relative_phone" placeholder="Relative's Number" type="text"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Add Student</button>
+        </div>
+
+
+    </form>
+
+  </div>
+</div>
+</div>
+
+
+
+{% endblock %}

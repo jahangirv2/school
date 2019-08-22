@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Simple Data Table</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+ <script>
+      function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).outerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+        document.location.reload(true);
+      }
+    </script>
+</head>
+<body>
+    <div class="container">
+
+                             <img src="https://i.ibb.co/StYdgt3/ministry.jpg" style="height:100px; width:100px;margin-bottom:10px"/>
+                             <img src="https://i.ibb.co/mR5dn84/school.jpg" style="height:100px; width:100px;margin-bottom:10px;float:right"/>
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Student <b>Details</b></h2></div>
+                    <div class="col-sm-4">
+                        <div class="search-box" >
+                            <i class="material-icons">&#xE8B6;</i>
+                            <input onkeyup="myFunction()" id="searchBox" type="text" class="form-control" placeholder="Search&hellip;">
+
+
+                            <a href="{{ url_for('students')}}" style="color: white">
+                            <button style="margin-top:10px;" class="btn btn-primary">
+                                Add Student
+                                </button>
+                                </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="overflow-x:auto;">
+            <table id="myTable" class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Gr Number</th>
+                        <th>Class/Section</th>
+						<th>Student's Name</th>
+						<th>Date of birth</th>
+						<th>Place of Birth</th>
+						<th>Student's Iqama</th>
+						<th>Passport Number</th>
+						<th>Blood Group</th>
+						<th>Father's Name</th>
+						<th>Father's Iqama Number</th>
+						<th>Father's Passport Number</th>
+						<th>Mother's  Name</th>
+						<th>Mother's Iqama Number</th>
+						<th>Mother's Passport Number</th>
+						<th>Address</th>
+						<th>Telephone Number</th>
+						<th>E-mail Address</th>
+						<th>Name of Relative</th>
+						<th>Relative's Phone.No</th>
+						<th>Print PDF</th>
+						<th>Delete Student</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students_list%}
+                    <tr>
+                        <td>{{student.gr_num}}</td>
+                        <td>{{student.class_sec}}</td>
+                        <td>{{student.students_name}}</td>
+                        <td>{{student.dob}}</td>
+                        <td>{{student.birth}}</td>
+                        <td>{{student.student_iqama}}</td>
+                        <td>{{student.passport_number}}</td>
+                        <td>{{student.blood_group}}</td>
+                        <td>{{student.father_name}}</td>
+                        <td>{{student.father_iqama}}</td>
+                        <td>{{student.father_passport}}</td>
+                        <td>{{student.mother_name}}</td>
+                        <td>{{student.mother_iqama}}</td>
+                        <td>{{student.mother_passport}}</td>
+                        <td>{{student.address}}</td>
+                        <td>{{student.telephone}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.relative_name}}</td>
+                        <td>{{student.relative_phone}}</td>
+                        <td><div id="{{ student.gr_num }}">
+                         <div class="printMe">
+                             <img src="https://i.ibb.co/StYdgt3/ministry.jpg" style="height:100px; width:100px;margin-bottom:10px"/>
+                             <img src="https://i.ibb.co/mR5dn84/school.jpg" style="height:100px; width:100px;margin-bottom:10px;float:right"/>
+                            <form>
+                                <div class="form-group">
+                                    <p>GR#: {{student.gr_num}}</p>
+        </div>
+        <div class="form-group">
+            <p>Class Section: {{student.class_sec}}</p>
+        </div>
+        <div class="form-group">
+            <p>Student's Name: {{student.students_name}}</p>
+        </div>
+        <div class="form-group">
+        <p>DOB: {{student.dob}}</p>
+        </div>
+        <div class="form-group">
+            <p>Birthplace: {{student.birth}}</p>
+        </div>
+        <div class="form-group">
+            <p>Student's Iqama: {{student.student_iqama}}</p>
+        </div>
+        <div class="form-group">
+            <p>Passport#: {{student.passport_number}}</p>
+        </div>
+        <div class="form-group">
+
+            <p>BloodGroup: {{student.bloud_group}}</p>
+        </div>
+        <div class="form-group">
+            <p>Father's Name: {{student.father_name}}</p>
+        </div>
+        <div class="form-group">
+            <p>Father's Iqama: {{student.father_iqama}}</p>
+        </div>
+        <div class="form-group">
+            <p>Father's Passport: {{student.father_passport}}</p>
+        </div>
+         <div class="form-group">
+
+            <p>Mother's Name: {{student.mother_name}}</p>
+        </div>
+        <div class="form-group">
+
+            <p>Mother's Iqama: {{student.mother_iqama}}</p>
+        </div>
+        <div class="form-group">
+
+            <p>Mother's Passport: {{student.mother_passport}}</p>
+        </div>
+        <div class="form-group">
+
+            <p>Address: {{student.address}}</p>
+        </div>
+       <div class="form-group">
+
+            <p>Telephone: {{student.telephone}}</p>
+        </div>
+         <div class="form-group">
+
+            <p>Email: {{student.email}}</p>
+        </div>
+         <div class="form-group">
+
+            <p>Relative's Name: {{student.relative_name}}</p>
+        </div>
+         <div class="form-group">
+
+            <p>Relative's Phone: {{student.relative_phone}}</p>
+        </div>
+                            </form>
+
+
+                         </div>
+
+                        </div>
+
+                        	<button class="primary" onclick="printContent('{{student.gr_num}}')">Print</button>
+                        </td>
+                        <td>
+							<a href="{{ url_for('delete_entry', entry_id= student.gr_num )}}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchBox");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    td_1 = tr[i].getElementsByTagName("td")[1];
+    td_2 = tr[i].getElementsByTagName("td")[2];
+    td_3 = tr[i].getElementsByTagName("td")[3];
+    td_4 = tr[i].getElementsByTagName("td")[4];
+    td_5 = tr[i].getElementsByTagName("td")[5];
+    td_6 = tr[i].getElementsByTagName("td")[6];
+    td_7 = tr[i].getElementsByTagName("td")[7];
+    td_8 = tr[i].getElementsByTagName("td")[8];
+    td_9 = tr[i].getElementsByTagName("td")[9];
+    td_10 = tr[i].getElementsByTagName("td")[10];
+    td_11 = tr[i].getElementsByTagName("td")[11];
+    td_12 = tr[i].getElementsByTagName("td")[12];
+    td_13 = tr[i].getElementsByTagName("td")[13];
+    td_14 = tr[i].getElementsByTagName("td")[14];
+    td_15 = tr[i].getElementsByTagName("td")[15];
+    td_16 = tr[i].getElementsByTagName("td")[16];
+    td_17 = tr[i].getElementsByTagName("td")[17];
+    td_18 = tr[i].getElementsByTagName("td")[18];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      txtValue1 = td_1.textContent || td_1.innerText;
+      txtValue2 = td_2.textContent || td_2.innerText;
+      txtValue3 = td_3.textContent || td_3.innerText;
+      txtValue4 = td_4.textContent || td_4.innerText;
+      txtValue5 = td_5.textContent || td_5.innerText;
+      txtValue6 = td_6.textContent || td_6.innerText;
+      txtValue7 = td_7.textContent || td_7.innerText;
+      txtValue8 = td_8.textContent || td_8.innerText;
+      txtValue9 = td_9.textContent || td_9.innerText;
+      txtValue10 = td_10.textContent || td_10.innerText;
+      txtValue11 = td_11.textContent || td_11.innerText;
+      txtValue12 = td_12.textContent || td_12.innerText;
+      txtValue13 = td_13.textContent || td_13.innerText;
+      txtValue14 = td_14.textContent || td_14.innerText;
+      txtValue15 = td_15.textContent || td_15.innerText;
+      txtValue16 = td_16.textContent || td_16.innerText;
+      txtValue17 = td_17.textContent || td_17.innerText;
+      txtValue18 = td_18.textContent || td_18.innerText;
+
+
+
+
+      if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1|| txtValue4.toUpperCase().indexOf(filter) > -1|| txtValue5.toUpperCase().indexOf(filter) > -1|| txtValue6.toUpperCase().indexOf(filter) > -1|| txtValue7.toUpperCase().indexOf(filter) > -1|| txtValue8.toUpperCase().indexOf(filter) > -1|| txtValue9.toUpperCase().indexOf(filter) > -1|| txtValue10.toUpperCase().indexOf(filter) > -1|| txtValue11.toUpperCase().indexOf(filter) > -1|| txtValue12.toUpperCase().indexOf(filter) > -1|| txtValue13.toUpperCase().indexOf(filter) > -1|| txtValue14.toUpperCase().indexOf(filter) > -1|| txtValue15.toUpperCase().indexOf(filter) > -1|| txtValue16.toUpperCase().indexOf(filter) > -1|| txtValue17.toUpperCase().indexOf(filter) > -1|| txtValue18.toUpperCase().indexOf(filter) > -1 ) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+<style type="text/css">
+    body {
+        color: #566787;
+        background: #f5f5f5;
+		font-family: 'Roboto', sans-serif;
+	}
+	.table-wrapper {
+        background: #fff;
+        padding: 20px;
+        margin: 30px 0;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {
+        padding-bottom: 10px;
+        margin: 0 0 10px;
+    }
+    .table-title h2 {
+        margin: 8px 0 0;
+        font-size: 22px;
+    }
+    .search-box {
+        position: relative;
+        float: right;
+    }
+    .search-box input {
+        height: 34px;
+        border-radius: 20px;
+        padding-left: 35px;
+        border-color: #ddd;
+        box-shadow: none;
+    }
+	.search-box input:focus {
+		border-color: #3FBAE4;
+	}
+    .search-box i {
+        color: #a0a5b1;
+        position: absolute;
+        font-size: 19px;
+        top: 8px;
+        left: 10px;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+
+    }
+    table.table-striped tbody tr:nth-of-type(odd) {
+    	background-color: #fcfcfc;
+	}
+	table.table-striped.table-hover tbody tr:hover {
+		background: #f5f5f5;
+	}
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+
+    }
+    table.table td:last-child {
+        width: 130px;
+    }
+    table.table td a {
+        color: #a0a5b1;
+        display: inline-block;
+        margin: 0 5px;
+    }
+	table.table td a.view {
+        color: #03A9F4;
+    }
+    table.table td a.edit {
+        color: #FFC107;
+    }
+    table.table td a.delete {
+        color: #E34724;
+    }
+    table.table td i {
+        font-size: 19px;
+    }
+    .pagination {
+        float: right;
+        margin: 0 0 5px;
+    }
+    .pagination li a {
+        border: none;
+        font-size: 95%;
+        width: 30px;
+        height: 30px;
+        color: #999;
+        margin: 0 2px;
+        line-height: 30px;
+        border-radius: 30px !important;
+        text-align: center;
+        padding: 0;
+    }
+    .pagination li a:hover {
+        color: #666;
+    }
+    .pagination li.active a {
+        background: #03A9F4;
+    }
+    .pagination li.active a:hover {
+        background: #0397d6;
+    }
+	.pagination li.disabled i {
+        color: #ccc;
+    }
+    .pagination li i {
+        font-size: 16px;
+        padding-top: 6px
+    }
+    .hint-text {
+        float: left;
+        margin-top: 6px;
+        font-size: 95%;
+    }
+    .printMe {display: none;}
+    @media print {
+        div {display: none;}
+        .printMe {display: block;}
+    }
+
+</style>

@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Student
+{% endblock %}
+
+{% block main %}
+<head>
+	<title>Table V05</title>
+	<meta charset="UTF-8">
+
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/main.css">
+<!--===============================================================================================-->
+ <script>
+      function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+        document.location.reload(true);
+      }
+    </script>
+
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1">
+					<div class="table100-firstcol">
+						<table class="table table-bordered">
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">GR.No</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for student in students_list%}
+								<tr class="row100 body">
+									<td class="cell100 column1">{{student.gr_num}}</td>
+								</tr>
+								{% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+
+					<div class="wrap-table100-nextcols js-pscroll">
+						<div class="table100-nextcols">
+							<table>
+								<thead>
+									<tr class="row100 head">
+										<th>Class/Section</th>
+										<th>Student's Name</th>
+										<th>Date of birth</th>
+										<th>Place of Birth</th>
+										<th>Student's Iqama</th>
+										<th>Passport Number</th>
+										<th>Blood Group</th>
+										<th>Father's Name</th>
+										<th>Father's Iqama Number</th>
+										<th>Father's Passport Number</th>
+										<th>Mother's  Name</th>
+										<th>Mother's Iqama Number</th>
+										<th>Mother's Passport Number</th>
+										<th>Address</th>
+										<th>Telephone Number</th>
+										<th>E-mail Address</th>
+										<th>Name of Relative</th>
+										<th>Telephone Number</th>
+										<th>Print PDF</th>
+</tr>
+								</thead>
+								<tbody>
+									{% for student in students_list%}
+									<tr class="row100 body">
+										<td class="cell100 column2">{{student.class_sec}}</td>
+										<td class="cell100 column3">{{student.students_name}}</td>
+										<td class="cell100 column4">{{student.dob}}</td>
+										<td class="cell100 column5">{{student.birth}}</td>
+										<td class="cell100 column6">{{student.student_iqama}}</td>
+										<td class="cell100 column7">{{student.passport_number}}</td>
+										<td class="cell100 column8">{{student.blood_group}}</td>
+										<td class="cell100 column7">{{student.passport_number}}</td>
+										<td class="cell100 column8">{{student.father_name}}</td>
+										<td class="cell100 column7">{{student.father_iqama}}</td>
+										<td class="cell100 column8">{{student.father_passport}}</td>
+										<td class="cell100 column7">{{student.mother_name}}</td>
+										<td class="cell100 column8">{{student.mother_iqama}}</td>
+										<td class="cell100 column7">{{student.mother_passport}}</td>
+										<td class="cell100 column8">{{student.telephone}}</td>
+										<td class="cell100 column7">{{student.email}}</td>
+										<td class="cell100 column8">{{student.relative_name}}</td>
+										<td class="cell100 column8">{{student.relative_phone}}</td>
+										<td class="cell100 column8"><div id="{{ student.gr_num }}">
+
+
+										</div>
+										<button onclick="printContent('{{student.gr_num}}')">Print Content</button>
+										</td>
+
+
+
+									</tr>
+									{% endfor %}
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="js/jspdf.js"></script>
+	<script src="js/jquery-2.1.3.js"></script>
+	<script src="js/pdfFromHTML.js"></script>
+
+<!--===============================================================================================-->
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+
+			$(this).on('ps-x-reach-start', function(){
+				$(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+			});
+
+			$(this).on('ps-scroll-x', function(){
+				$(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+			});
+
+		});
+
+
+
+
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>
+{% endblock %}
